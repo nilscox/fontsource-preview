@@ -1,0 +1,5 @@
+yarn-error.log
+node_modules
+dist
+src/fonts.json
+src/fonts*.ts
