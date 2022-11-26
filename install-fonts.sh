@@ -23,9 +23,9 @@ function install_fonts() {
     list["$i"]="@fontsource/${list[$i]}"
   done
 
-  for i in $(seq 0 $(("$total" / 250))); do
-    echo "$(($i * 250)) / $total"
-    yarn add "${list[@]:$(($i * 250)):250}"
+  for i in $(seq 0 $(("$total" / 200))); do
+    echo "$(($i * 200)) / $total"
+    yarn add "${list[@]:$(($i * 200)):200}"
   done
 }
 
