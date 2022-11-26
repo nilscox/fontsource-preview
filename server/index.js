@@ -36,7 +36,7 @@ const processUploadedFile = async (file) => {
 
   try {
     console.log(`removing all files in ${publicDir}`);
-    await execAsync(`rm -rf ${publicDir}/*`);
+    await execAsync(`rm -rf ${publicDir}/@fontsource ${publicDir}/fonts.json`);
 
     console.log(`extracting ${uploadedFile} into ${publicDir}`);
     console.log(await execAsync(`tar xvf ${uploadedFile} -C ${publicDir}`));
