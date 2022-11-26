@@ -28,7 +28,7 @@ export const Filters = () => {
         ref={searchInputRef}
         type="search"
         placeholder="Search..."
-        className="w-full border-b py-1 text-xl"
+        className="w-full border-b py-1 px-2 text-xl"
         value={filter}
         onChange={({ target }) => setValue('filter', target.value)}
       />

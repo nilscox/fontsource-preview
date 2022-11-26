@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom/client';
 
+import '@fontsource/roboto';
 import './styles.css';
-import './fonts';
 
 import { App } from './app';
 

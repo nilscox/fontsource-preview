@@ -5,7 +5,7 @@ export const Header = () => (
   <div>
     <div className="row h-32">
       <h1 className="self-center text-4xl">
-        <code title={`Last update: ${buildDate}`}>@fontsource preview</code>
+        <code>@fontsource/*</code>
       </h1>
       <div className="ml-auto w-full max-w-md">
         <GlobalControls />

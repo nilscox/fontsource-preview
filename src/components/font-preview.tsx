@@ -28,6 +28,8 @@ export const FontPreview = ({ font }: FontPreviewProps) => {
 
   return (
     <>
+      <FontLinks font={font} />
+
       <FontControls
         font={font}
         fontWeight={fontWeight}
@@ -48,3 +50,23 @@ export const FontPreview = ({ font }: FontPreviewProps) => {
 
 const icons =
   'photo_camera thumb_up assignment create_new_folder insert_invitation drafts credit_card timer check_box close';
+
+type FondLinksProps = {
+  font: Font;
+};
+
+const FontLinks = ({ font }: FondLinksProps) => (
+  <>
+    {getFontFiles(font).map((file, index) => (
+      <link key={index} rel="stylesheet" type="text/css" href={file} />
+    ))}
+  </>
+);
+
+const getFontFiles = (font: Font) => {
+  return font.weights.flatMap((weight) => {
+    return font.styles.map((style) => {
+      return `@fontsource/${font.fontId}/${weight}${style === FontStyle.italic ? '-italic' : ''}.css`;
+    });
+  });
+};

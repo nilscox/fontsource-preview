@@ -1,19 +1,17 @@
 import { FixedSizeList } from 'react-window';
 
 import { useFilterFont, useFontsContext } from '../fonts-context';
-import fontsList from '../fonts.json';
 import { Font } from '../types';
 
 import { FontPreview } from './font-preview';
 
-const fonts = fontsList as Font[];
-
 type FontsListProps = {
+  fonts: Font[];
   width: number;
   height: number;
 };
 
-export const FontsList = ({ width, height }: FontsListProps) => {
+export const FontsList = ({ fonts, width, height }: FontsListProps) => {
   const { fontSize } = useFontsContext();
   const filter = useFilterFont();
   const filteredList = fonts.filter(filter);
@@ -33,7 +31,7 @@ export const FontsList = ({ width, height }: FontsListProps) => {
 
 type RowProps = {
   index: number;
-  data: typeof fonts;
+  data: Font[];
   style: React.CSSProperties;
 };
 

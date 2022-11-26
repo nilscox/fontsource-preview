@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const path = require('path');
-const { EnvironmentPlugin, ProvidePlugin, DefinePlugin } = require('webpack');
+const { ProvidePlugin } = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -15,7 +15,7 @@ const config = (module.exports = {
   entry: './src/index.tsx',
 
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -56,10 +56,6 @@ const config = (module.exports = {
   },
 
   plugins: [
-    new DefinePlugin({
-      buildDate: `"${new Date().toISOString()}"`,
-    }),
-    new EnvironmentPlugin(),
     new ProvidePlugin({
       React: 'react',
     }),
