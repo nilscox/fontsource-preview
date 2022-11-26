@@ -1,7 +1,15 @@
-import { useFontsContext } from '../fonts-context';
+import { useSearchParams, useSetSearchParam } from '../search-params';
+
+export const defaultFontSize = 42;
+export const defaultText = 'Sphinx of black quartz, judge my vow.';
 
 export const GlobalControls = () => {
-  const { fontSize, text, setValue } = useFontsContext();
+  const searchParams = useSearchParams();
+  const setSearchParam = useSetSearchParam();
+
+  const handleFontSizeChanged = (value: number) => {
+    setSearchParam('size', value === defaultFontSize ? undefined : value);
+  };
 
   return (
     <div className="col h-full items-stretch justify-evenly">
@@ -15,15 +23,15 @@ export const GlobalControls = () => {
           min={1}
           max={200}
           step={1}
-          value={fontSize}
-          onChange={({ target }) => setValue('fontSize', target.valueAsNumber)}
+          value={searchParams.get('size') ?? defaultFontSize}
+          onChange={({ target }) => handleFontSizeChanged(target.valueAsNumber)}
           className="w-48 align-middle"
         />
         <input
           type="number"
           className="ml-2 w-16 align-middle"
-          value={fontSize}
-          onChange={({ target }) => setValue('fontSize', target.valueAsNumber)}
+          value={searchParams.get('size') ?? defaultFontSize}
+          onChange={({ target }) => handleFontSizeChanged(target.valueAsNumber)}
         />
       </div>
 
@@ -34,9 +42,9 @@ export const GlobalControls = () => {
         <input
           id="text"
           type="text"
-          value={text}
-          onChange={({ target }) => setValue('text', target.value)}
           className="w-full"
+          defaultValue={searchParams.get('text') ?? defaultText}
+          onChange={({ target }) => setSearchParam('text', target.value)}
         />
       </div>
     </div>

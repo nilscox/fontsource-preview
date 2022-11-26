@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { FontsList } from './components/fonts-list';
 import { Header } from './components/header';
-import { FontsContextProvider } from './fonts-context';
 import { Font } from './types';
 
 export const App = () => {
@@ -31,13 +30,11 @@ export const App = () => {
   }, [recomputeSize]);
 
   return (
-    <FontsContextProvider>
-      <div className="col container mx-auto h-screen px-6">
-        <Header />
-        <div className="flex-1" ref={setRef}>
-          {fonts && width && height && <FontsList fonts={fonts} width={width} height={height} />}
-        </div>
+    <div className="col container mx-auto h-screen px-6">
+      <Header />
+      <div className="flex-1" ref={setRef}>
+        {fonts && width && height && <FontsList fonts={fonts} width={width} height={height} />}
       </div>
-    </FontsContextProvider>
+    </div>
   );
 };

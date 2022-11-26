@@ -1,16 +1,20 @@
 import { useCallback, useState } from 'react';
 
-import { useFontsContext } from '../fonts-context';
+import { useSearchParams } from '../search-params';
 import { Font, FontStyle } from '../types';
 
 import { FontControls } from './font-controls';
+import { defaultFontSize, defaultText } from './global-controls';
 
 type FontPreviewProps = {
   font: Font;
 };
 
 export const FontPreview = ({ font }: FontPreviewProps) => {
-  const { fontSize, text } = useFontsContext();
+  const searchParams = useSearchParams();
+  const fontSize = Number(searchParams.get('size') ?? defaultFontSize);
+  const text = searchParams.get('text') ?? defaultText;
+
   const [fontWeight, setFontWeight] = useState<number>();
   const [fontStyle, setFontStyle] = useState<FontStyle>(FontStyle.normal);
 
